@@ -1,6 +1,7 @@
 node_modules/
 test/
-test/
+src/
+types/
 tsconfig*
 yarn.lock
 yarn-error.log
