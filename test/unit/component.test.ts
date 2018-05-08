@@ -1,7 +1,6 @@
 import { expect } from '../test-helper'
 import { spy, assert as sinonAssert } from 'sinon'
-import { build } from '../../src/component-builder'
-import { minifyAst } from '../../src/utils'
+import { svgComponent } from '../../src/index'
 import { mount } from 'vue-test-utils'
 
 import { compile, CompiledResult, ASTElement } from 'vue-template-compiler'
@@ -20,7 +19,7 @@ describe('ComponentBuilder', () => {
       let parsed = parseSvg()
       let ast = parsed.ast as ASTElement
 
-      return build(ast)
+      return svgComponent(ast)
     }
 
     context('default properties', () => {
@@ -46,22 +45,6 @@ describe('ComponentBuilder', () => {
 
         let attrs = wrapper.attributes() as Record<string, string>
         expect(attrs.fill).to.eq('currentColor')
-      })
-    })
-
-    context('when the builder is passed a "minified" AST', () => {
-      let minifyAndBuild = () => {
-        let parsed = parseSvg()
-        let ast = parsed.ast as ASTElement
-
-        return build(minifyAst(ast))
-      }
-
-      it('returns a usable vue component for the associated SVG', () => {
-        let iconComponent = minifyAndBuild()
-        let wrapper = mount(iconComponent)
-
-        expect(wrapper.element.tagName).to.eq('svg')
       })
     })
 
