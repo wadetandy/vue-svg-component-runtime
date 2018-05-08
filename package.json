@@ -1,6 +1,6 @@
 {
   "name": "vue-svg-component-runtime",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Runtime for supporting SVG-as-Vue Components",
   "main": "lib/index.js",
   "module": "lib-esm/index.js",

@@ -1,7 +1,7 @@
 import Vue, { VueConstructor, CreateElement, VNode, ComponentOptions, PropOptions } from 'vue'
 
 export const isElementNode = (node : MinifiedASTNode) : node is MinifedASTElement => {
-  return node.hasOwnProperty('children')
+  return node.hasOwnProperty('tag')
 }
 
 export type MinifiedASTNode =  MinifiedASTText | MinifedASTElement
